@@ -20,9 +20,9 @@ tags=visual Studio,debug
 
 #category:
 
-#homepage:
-#tracker:
-#repository:
+homepage:https://github.com/lmotta/debug_vs_plugin
+#tracker:https://github.com/lmotta/debug_vs_plugin
+repository:https://github.com/lmotta/debug_vs_plugin
 
 changelog:
     Version 0.1:
