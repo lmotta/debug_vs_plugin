@@ -21,7 +21,7 @@ tags=visual Studio,debug
 #category:
 
 homepage:https://github.com/lmotta/debug_vs_plugin
-#tracker:https://github.com/lmotta/debug_vs_plugin
+tracker:https://github.com/lmotta/debug_vs_plugin
 repository:https://github.com/lmotta/debug_vs_plugin
 
 changelog:
