@@ -1,0 +1,30 @@
+[general]
+name:debugvs
+description:Plugin to Enable Debug for Visual Studio
+about:This plugin is for debugging in Visual Studio ( tested in Visual Studio Code).
+     For use, run this plugin and enable the Debug (Python:Attach) in Visual Studio.
+     Need install the ptvsd's module(pip3 install ptvsd).
+     * The icon is owned by Microsoft.
+
+author:Luiz Motta
+email:motta.luiz@gmail.com
+
+version:3.0
+qgisMinimumVersion:3.2
+
+experimental:False
+deprecated:False
+
+icon:code.png
+tags=visual Studio,debug
+
+#category:
+
+#homepage:
+#tracker:
+#repository:
+
+changelog:
+    Version 0.1:
+    * Start Plugin for QGIS 3
+
