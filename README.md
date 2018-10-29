@@ -15,6 +15,8 @@ For use need install the ptvsd's module(pip3 install ptvsd).
 Luiz Motta
 
 ## Changelog
+- 2018-10-29
+Update metadata and icon
 - 2018-10-18
  Initial plugin
 
