@@ -9,7 +9,7 @@ about:This plugin is for debugging in Visual Studio ( tested in Visual Studio Co
 author:Luiz Motta
 email:motta.luiz@gmail.com
 
-version:0.2
+version:0.3
 qgisMinimumVersion:3.2
 
 experimental:False
@@ -20,11 +20,13 @@ tags:visual Studio,debug, developers
 
 #category:
 
-homepage:https://github.com/lmotta/debug_vs_plugin
-tracker:https://github.com/lmotta/debug_vs_plugin
+homepage:https://github.com/lmotta/debug_vs_plugin/wiki
+tracker:https://github.com/lmotta/debug_vs_plugin/issues
 repository:https://github.com/lmotta/debug_vs_plugin
 
-changelog: 0.2(2018-10-29)
+changelog: 0.3(2018-12-06)
+    Update metadata
+    - 0.2(2018-10-29)
     Update metadata and icon
     - 0.1:
     Start Plugin for QGIS 3
