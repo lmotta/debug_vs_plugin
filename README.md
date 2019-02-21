@@ -1,13 +1,6 @@
-<!-- IBAMA logo -->
-[ibama_logo]: http://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Logo_IBAMA.svg/150px-Logo_IBAMA.svg.png
+# Debug Visual Studio Code
 
-![][ibama_logo]  
-[Brazilian Institute of Environment and Renewable Natural Resources](http://www.ibama.gov.br)
-
-
-# Debug Visual Studio
-
-Plugin to Enable Debug for Visual Studio.
+Plugin to Enable Debug for Visual Studio Code.
 For use need install the ptvsd's module(pip3 install ptvsd).
 ** The icon is owned by Microsoft.
 
@@ -15,6 +8,8 @@ For use need install the ptvsd's module(pip3 install ptvsd).
 Luiz Motta
 
 ## Changelog
+- 2019-02-21
+Updated icon
 - 2018-12-06
 Update metadata
 - 2018-10-29

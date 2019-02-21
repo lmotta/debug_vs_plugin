@@ -4,18 +4,18 @@ description:Plugin to Enable Debug for Visual Studio
 about:This plugin is for debugging in Visual Studio ( tested in Visual Studio Code).
      For use, run this plugin and enable the Debug (Python:Attach) in Visual Studio.
      Need install the ptvsd's module(pip3 install ptvsd).
-     * The icon is owned by Microsoft.
+     * The icon author is Papirus Development Team.
 
 author:Luiz Motta
 email:motta.luiz@gmail.com
 
-version:0.3
+version:0.4
 qgisMinimumVersion:3.2
 
 experimental:False
 deprecated:False
 
-icon:code.png
+icon:code.svg
 tags:visual Studio,debug, developers
 
 #category:
@@ -24,7 +24,9 @@ homepage:https://github.com/lmotta/debug_vs_plugin/wiki
 tracker:https://github.com/lmotta/debug_vs_plugin/issues
 repository:https://github.com/lmotta/debug_vs_plugin
 
-changelog: 0.3(2018-12-06)
+changelog:0.4(2019-02-21)
+    Updated icon
+    - 0.3(2018-12-06)
     Update metadata
     - 0.2(2018-10-29)
     Update metadata and icon

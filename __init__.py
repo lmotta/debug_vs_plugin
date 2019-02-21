@@ -20,6 +20,12 @@
  This script initializes the plugin, making it known to QGIS.
 """
 
+__author__ = 'Luiz Motta'
+__date__ = '2018-10-16'
+__copyright__ = '(C) 2018, Luiz Motta'
+__revision__ = '$Format:%H$'
+
+
 import os
 
 from qgis.PyQt.QtCore import QObject, pyqtSlot
@@ -46,7 +52,7 @@ class DebugVSPlugin( QObject ):
     self.action = None
 
   def initGui(self):
-    icon = QIcon( os.path.join( os.path.dirname(__file__), 'code.png' ) )
+    icon = QIcon( os.path.join( os.path.dirname(__file__), 'code.svg' ) )
     self.action = QAction( icon, self.nameAction, self.iface.mainWindow())
     self.action.triggered.connect( self.run )
     self.iface.addToolBarIcon(self.action)
@@ -65,5 +71,7 @@ class DebugVSPlugin( QObject ):
     if self.ptvsd.is_attached():
       self.msgBar.pushWarning( self.pluginName, "Remote Debug for Visual Studio is active")
       return
-    self.ptvsd.enable_attach( address = ('localhost', 5678) )
     self.msgBar.pushInfo( self.pluginName, "Run the Debug in Visual Studio(Python:Attach)")
+    self.ptvsd.enable_attach( address = ('localhost', 5678) )
+    #self.ptvsd.wait_for_attach()
+    
