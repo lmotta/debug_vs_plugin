@@ -56,10 +56,10 @@ class DebugVSPlugin( QObject ):
     self.action = QAction( icon, self.nameAction, self.iface.mainWindow())
     self.action.triggered.connect( self.run )
     self.iface.addToolBarIcon(self.action)
-    self.iface.addPluginToMenu( "&{}".format( self.nameAction ) , self.action)
+    self.iface.addPluginToMenu( f"&{self.nameAction}" , self.action)
 
   def unload(self):
-    self.iface.removePluginMenu( "&{}".format( self.nameAction ), self.action)
+    self.iface.removePluginMenu( f"&{self.nameAction}", self.action)
     self.iface.removeToolBarIcon( self.action )
 
   @pyqtSlot(bool)
