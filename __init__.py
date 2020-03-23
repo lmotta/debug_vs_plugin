@@ -26,7 +26,7 @@ __copyright__ = '(C) 2018, Luiz Motta'
 __revision__ = '$Format:%H$'
 
 
-import os
+import os, sys
 
 from qgis.PyQt.QtCore import QObject, pyqtSlot
 from qgis.PyQt.QtGui import QIcon
@@ -52,6 +52,9 @@ class DebugVSPlugin( QObject ):
     self.pluginName = 'DebugVS'
     self.nameAction = 'Enable Debug for Visual Studio'
     self.action = None
+    # Check exist sys.argv - /ptvsd/.../pydevd_process_net_command
+    if not hasattr(sys, 'argv'):
+      sys.argv = []
 
   def initGui(self):
     icon = QIcon( os.path.join( os.path.dirname(__file__), 'code.svg' ) )
