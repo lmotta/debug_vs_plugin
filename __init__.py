@@ -45,6 +45,8 @@ class DebugVSPlugin( QObject ):
       self.ptvsd = ptvsd
     except:
       pass
+    self.port = 5678
+    self.host = 'localhost'
     self.iface, self.action, self.hasInit = iface, None, False
     self.msgBar = iface.messageBar()
     self.pluginName = 'DebugVS'
@@ -56,10 +58,10 @@ class DebugVSPlugin( QObject ):
     self.action = QAction( icon, self.nameAction, self.iface.mainWindow())
     self.action.triggered.connect( self.run )
     self.iface.addToolBarIcon(self.action)
-    self.iface.addPluginToMenu( "&{}".format( self.nameAction ) , self.action)
+    self.iface.addPluginToMenu( f"&{self.nameAction}" , self.action)
 
   def unload(self):
-    self.iface.removePluginMenu( "&{}".format( self.nameAction ), self.action)
+    self.iface.removePluginMenu( f"&{self.nameAction}", self.action)
     self.iface.removeToolBarIcon( self.action )
 
   @pyqtSlot(bool)
@@ -68,10 +70,11 @@ class DebugVSPlugin( QObject ):
     if self.ptvsd is None:
       self.msgBar.pushCritical( self.pluginName, "Need install ptvsd: pip3 install ptvsd")
       return
+    msgPort = f'"request": "attach", "Port": {self.port}, "host": "{self.host}"'
     if self.ptvsd.is_attached():
-      self.msgBar.pushWarning( self.pluginName, "Remote Debug for Visual Studio is active")
+      self.msgBar.pushWarning( self.pluginName, f"Remote Debug for Visual Studio is active({msgPort})")
       return
-    self.msgBar.pushInfo( self.pluginName, "Run the Debug in Visual Studio(Python:Attach)")
-    self.ptvsd.enable_attach( address = ('localhost', 5678) )
-    #self.ptvsd.wait_for_attach()
+    t_, self.port = self.ptvsd.enable_attach( address = ( self.host, self.port ) )
+    msgPort = f'"request": "attach", "Port": {self.port}, "host": "{self.host}"'
+    self.msgBar.pushInfo( self.pluginName, f"Remote Debug for Visual Studio is running({msgPort})")
     
