@@ -8,6 +8,8 @@ For use need install the ptvsd's module(pip3 install ptvsd).
 Luiz Motta
 
 ## Changelog
+- 2021-02-27
+Added load and run scripts
 - 2020-03-23
 Added localhost and port in message
 - 2019-02-21

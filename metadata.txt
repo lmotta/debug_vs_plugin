@@ -9,14 +9,14 @@ about:This plugin is for debugging in Visual Studio ( tested in Visual Studio Co
 author:Luiz Motta
 email:motta.luiz@gmail.com
 
-version:0.5
+version:0.6
 qgisMinimumVersion:3.2
 
 experimental:False
 deprecated:False
 
 icon:code.svg
-tags:visual Studio,debug, developers
+tags:Visual Studio,debug, developers
 
 #category:
 
@@ -24,7 +24,9 @@ homepage:https://github.com/lmotta/debug_vs_plugin/wiki
 tracker:https://github.com/lmotta/debug_vs_plugin/issues
 repository:https://github.com/lmotta/debug_vs_plugin
 
-changelog: 0.5(2020-03-23)
+changelog: 0.6(2021-02-27)
+    Added load and run scripts
+    - 0.5(2020-03-23)
     Added localhost and port in message 
     - 0.4(2019-02-21)
     Updated icon
