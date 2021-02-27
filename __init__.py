@@ -111,6 +111,14 @@ class DebugVSPlugin( QObject ):
     filenames = [ a.toolTip() for a in self.actionsScript ]
     return filename in filenames
 
+  def _checkEnable(self):
+    if not self.ptvsd.is_attached():
+      self.msgBar.popWidget()
+      msg = f"{self.nameActionEnable} AND attach in Visual Studio Code"
+      self.msgBar.pushWarning( self.pluginName, msg )
+      return False
+    return True
+
   @pyqtSlot(bool)
   def enable(self, checked):
     self.msgBar.popWidget()
@@ -127,10 +135,7 @@ class DebugVSPlugin( QObject ):
     
   @pyqtSlot(bool)
   def load(self, checked):
-    if not self.ptvsd.is_attached():
-      self.msgBar.popWidget()
-      msg = f"{self.nameActionEnable} AND attach in Visual Studio Code"
-      self.msgBar.pushWarning( self.pluginName, self.nameActionEnable )
+    if not self._checkEnable():
       return
 
     filename, _ = QFileDialog.getOpenFileName(None, 'Debug script', '','Python Files (*.py)' )
@@ -145,10 +150,7 @@ class DebugVSPlugin( QObject ):
 
   @pyqtSlot(bool)
   def run(self, checked):
-    if not self.ptvsd.is_attached():
-      msg = f"{self.nameActionEnable} AND attach in Visual Studio Code"
-      self.msgBar.popWidget()
-      self.msgBar.pushWarning( self.pluginName, msg )
+    if not self._checkEnable():
       return
 
     action = self.sender()
