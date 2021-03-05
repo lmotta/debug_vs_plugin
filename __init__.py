@@ -36,6 +36,9 @@ from qgis.PyQt.QtWidgets import QToolButton, QMenu, QAction, QFileDialog
 from qgis.core import QgsApplication
 
 
+
+execfile_ = lambda filename: execfile( filename, {} ) # To use the global variables of script
+
 def classFactory(iface):
   return DebugVSPlugin( iface )
 
@@ -143,7 +146,7 @@ class DebugVSPlugin( QObject ):
         return
 
     self.ptvsd.wait_for_attach()
-    execfile( filename )
+    execfile_( filename )
 
     if not self._existsActionScript( filename ):
       self._addActionScript( filename )
@@ -157,4 +160,4 @@ class DebugVSPlugin( QObject ):
     filename = action.toolTip()
 
     self.ptvsd.wait_for_attach()
-    execfile( filename )
+    execfile_( filename )

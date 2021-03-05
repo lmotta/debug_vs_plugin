@@ -9,7 +9,7 @@ about:This plugin is for debugging in Visual Studio ( tested in Visual Studio Co
 author:Luiz Motta
 email:motta.luiz@gmail.com
 
-version:0.6
+version:0.7
 qgisMinimumVersion:3.2
 
 experimental:False
@@ -24,7 +24,10 @@ homepage:https://github.com/lmotta/debug_vs_plugin/wiki
 tracker:https://github.com/lmotta/debug_vs_plugin/issues
 repository:https://github.com/lmotta/debug_vs_plugin
 
-changelog: 0.6(2021-02-27)
+changelog: 0.7(2021-03-05)
+    Fixed use the global variable in script.
+    Thanks Reynaldo.
+    - 0.6(2021-02-27)
     Added load and run scripts
     - 0.5(2020-03-23)
     Added localhost and port in message 
