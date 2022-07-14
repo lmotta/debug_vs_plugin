@@ -47,10 +47,10 @@ class DebugVSPlugin( QObject ):
   def __init__(self, iface):
     super().__init__()
     self.iface = iface
-    self.ptvsd = None
+    self.debugpy = None
     try:
-      import ptvsd
-      self.ptvsd = ptvsd
+      import debugpy
+      self.debugpy = debugpy
     except:
       pass
     self.port = 5678
@@ -67,7 +67,7 @@ class DebugVSPlugin( QObject ):
     self.pluginName = 'DebugVS'
     self.nameActionEnable = 'Enable Debug for Visual Studio'
     self.action = None
-    # Check exist sys.argv - /ptvsd/.../pydevd_process_net_command
+    # Check exist sys.argv - /debugpy/.../pydevd_process_net_command
     if not hasattr(sys, 'argv'):
       sys.argv = []
 
@@ -115,7 +115,7 @@ class DebugVSPlugin( QObject ):
     return filename in filenames
 
   def _checkEnable(self):
-    if not self.ptvsd.is_attached():
+    if not self.debugpy.is_attached():
       self.msgBar.popWidget()
       msg = f"{self.nameActionEnable} AND attach in Visual Studio Code"
       self.msgBar.pushWarning( self.pluginName, msg )
@@ -125,15 +125,15 @@ class DebugVSPlugin( QObject ):
   @pyqtSlot(bool)
   def enable(self, checked):
     self.msgBar.popWidget()
-    if self.ptvsd is None:
-      self.msgBar.pushCritical( self.pluginName, "Need install ptvsd: pip3 install ptvsd")
+    if self.debugpy is None:
+      self.msgBar.pushCritical( self.pluginName, "Need install debugpy: pip3 install debugpy")
       return
     msgPort = f'"request": "attach", "Port": {self.port}, "host": "{self.host}"'
-    if self.ptvsd.is_attached():
+    if self.debugpy.is_client_connected():
       self.msgBar.pushWarning( self.pluginName, f"Remote Debug for Visual Studio is active({msgPort})")
       return
-    t_, self.port = self.ptvsd.enable_attach( address = ( self.host, self.port ) )
-    msgPort = f'"request": "attach", "Port": {self.port}, "host": "{self.host}"'
+    t_, self.port = self.debugpy.listen( ( self.host, self.port ) )
+    msgPort = f'"request": "enable_attach", "Port": {self.port}, "host": "{self.host}"'
     self.msgBar.pushInfo( self.pluginName, f"Remote Debug for Visual Studio is running({msgPort})")
     
   @pyqtSlot(bool)
@@ -145,7 +145,7 @@ class DebugVSPlugin( QObject ):
     if not filename:
         return
 
-    self.ptvsd.wait_for_attach()
+    self.debugpy.wait_for_client()
     execfile_( filename )
 
     if not self._existsActionScript( filename ):
@@ -159,5 +159,5 @@ class DebugVSPlugin( QObject ):
     action = self.sender()
     filename = action.toolTip()
 
-    self.ptvsd.wait_for_attach()
+    self.debugpy.wait_for_client()
     execfile_( filename )

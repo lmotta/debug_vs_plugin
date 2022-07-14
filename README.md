@@ -1,13 +1,15 @@
 # Debug Visual Studio Code
 
 Plugin to Enable Debug for Visual Studio Code.
-For use need install the ptvsd's module(pip3 install ptvsd).
+For use need install the debugpy's module(pip3 install debugpy).
 ** The icon is owned by Microsoft.
 
 ## Author
 Luiz Motta
 
 ## Changelog
+- 2022-07-14
+Update to use debugpy instead of ptvsd (which is now depreced)
 - 2021-03-05
 Fixed use the global variable in script
 - 2021-02-27
