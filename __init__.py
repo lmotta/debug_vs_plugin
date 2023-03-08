@@ -27,7 +27,6 @@ __revision__ = '$Format:%H$'
 
 
 import os, sys
-from past.builtins import execfile
 
 from qgis.PyQt.QtCore import QObject, pyqtSlot
 from qgis.PyQt.QtGui import QIcon
@@ -35,9 +34,6 @@ from qgis.PyQt.QtWidgets import QToolButton, QMenu, QAction, QFileDialog
 
 from qgis.core import QgsApplication
 
-
-
-execfile_ = lambda filename: execfile( filename, {} ) # To use the global variables of script
 
 def classFactory(iface):
   return DebugVSPlugin( iface )
@@ -146,7 +142,7 @@ class DebugVSPlugin( QObject ):
         return
 
     self.debugpy.wait_for_client()
-    execfile_( filename )
+    exec(open(filename).read())
 
     if not self._existsActionScript( filename ):
       self._addActionScript( filename )
@@ -160,4 +156,4 @@ class DebugVSPlugin( QObject ):
     filename = action.toolTip()
 
     self.debugpy.wait_for_client()
-    execfile_( filename )
+    exec(open(filename).read())
