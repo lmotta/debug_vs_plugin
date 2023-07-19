@@ -50,7 +50,10 @@ class DebugVSPlugin( QObject ):
     except:
       pass
     self.port = 5678
-    self.host = 'localhost'
+    if os.environ.get('RUN_IN_DOCKER'):
+      self.host = "0.0.0.0"
+    else:
+      self.host = 'localhost'
     self.actionsScript = []
 
     self.toolButton = QToolButton()
