@@ -3,14 +3,14 @@ name:debugvs
 description:Plugin to Enable Debug for Visual Studio
 about:This plugin is for debugging in Visual Studio ( tested in Visual Studio Code).
      For use, run this plugin and enable the Debug (Python:Attach) in Visual Studio.
-     Need install the ptvsd's module(pip3 install ptvsd).
+     Need install the debugpy's module(pip3 install debugpy).
      * The icon author is Papirus Development Team.
 
 author:Luiz Motta
 email:motta.luiz@gmail.com
 
-version:0.7
-qgisMinimumVersion:3.2
+version:0.8
+qgisMinimumVersion:3.28
 
 experimental:False
 deprecated:False
@@ -24,7 +24,10 @@ homepage:https://github.com/lmotta/debug_vs_plugin/wiki
 tracker:https://github.com/lmotta/debug_vs_plugin/issues
 repository:https://github.com/lmotta/debug_vs_plugin
 
-changelog: 0.7(2021-03-05)
+changelog: 0.8 (2023-08-05)
+    Update to use 'debugpy' instead of 'ptvsd' (which is now depreced)
+    Thanks Jan Caha (https://github.com/JanCaha)
+    - 0.7(2021-03-05)
     Fixed use the global variable in script.
     Thanks Reynaldo.
     - 0.6(2021-02-27)
