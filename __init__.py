@@ -28,6 +28,7 @@ __revision__ = "$Format:%H$"
 
 import os
 import sys
+import shutil
 
 from qgis.core import QgsApplication
 from qgis.PyQt.QtCore import QObject, pyqtSlot
@@ -48,6 +49,7 @@ class DebugVSPlugin(QObject):
             import debugpy
 
             self.debugpy = debugpy
+            self.debugpy.configure(python=shutil.which("python"))
         except:
             pass
         self.port = 5678
